@@ -31,12 +31,16 @@ public class Ball {
 	}
 	
 	// This part is to be revised and improved.
-	public boolean planeCollision() {
-		Plane p = new Plane();
-		if(getX() <= p.getX()) {
-			
-		}
-		return false;
+	public boolean planeCollision(Plane p) {
+		int index = 0;
+		if(getY() >= p.getY() && getY() <= p.getY()+20) {
+			if(getX() <= p.getX() && getX() + 10 >= p.getX()) {
+				++index;				
+			} else if(getX() > p.getX() && getX() <= p.getX()+10+10) {
+				++index;
+			}
+		} 
+		return index > 0;
 	}
 	
 	public void move() {

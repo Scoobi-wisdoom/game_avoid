@@ -32,10 +32,11 @@ public class Avoid extends Applet implements Runnable, KeyListener {
 	public void paint(Graphics g) {
 		gfx.setColor(Color.black);
 		gfx.fillRect(0,0, WIDTH, HEIGHT);
-		
+		if(b1.planeCollision(p))
+			gameOver = true;
 		if(gameOver) {
 			gfx.setColor(Color.red);
-			gfx.drawString("Game Over", 350, 250);
+			gfx.drawString("Game Over", 300, 250);
 		}
 		
 		p.draw(gfx);
