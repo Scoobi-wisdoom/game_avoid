@@ -7,11 +7,13 @@ import java.awt.event.KeyListener;
 import java.awt.event.KeyEvent;
 import java.awt.Image;
 
+import java.util.ArrayList;
+
 public class Avoid extends Applet implements Runnable, KeyListener {
 	final int WIDTH = 700, HEIGHT = 500;
 	Thread thread;
 	Plane p;
-	Ball b1;
+	Ball b1, b2, b3, b4;
 	boolean gameStarted, gameOver;
 	Graphics gfx;
 	Image img;
@@ -23,6 +25,9 @@ public class Avoid extends Applet implements Runnable, KeyListener {
 		this.addKeyListener(this);
 		p = new Plane();
 		b1 = new Ball();
+		b2 = new Ball();
+		b3 = new Ball();
+		b4 = new Ball();
 		img = createImage(WIDTH, HEIGHT);
 		gfx = img.getGraphics();
 		thread = new Thread(this);
@@ -32,15 +37,18 @@ public class Avoid extends Applet implements Runnable, KeyListener {
 	public void paint(Graphics g) {
 		gfx.setColor(Color.black);
 		gfx.fillRect(0,0, WIDTH, HEIGHT);
-		if(b1.planeCollision(p))
+		if(b1.planeCollision(p) || b2.planeCollision(p) || b3.planeCollision(p) || b4.planeCollision(p))
 			gameOver = true;
 		if(gameOver) {
 			gfx.setColor(Color.red);
 			gfx.drawString("Game Over", 300, 250);
+		}else {
+			p.draw(gfx);
+			b1.draw(gfx);
+			b2.draw(gfx);
+			b3.draw(gfx);
+			b4.draw(gfx);
 		}
-		
-		p.draw(gfx);
-		b1.draw(gfx);
 		
 		if(!gameStarted) {
 			gfx.setColor(Color.white);
@@ -59,6 +67,9 @@ public class Avoid extends Applet implements Runnable, KeyListener {
 			if(gameStarted) {
 				p.move();
 				b1.move();
+				b2.move();
+				b3.move();
+				b4.move();
 			}
 			
 			repaint();
