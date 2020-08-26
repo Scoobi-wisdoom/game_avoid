@@ -10,7 +10,8 @@ import java.awt.Image;
 import java.util.ArrayList;
 
 public class Avoid extends Applet implements Runnable, KeyListener {
-	final int WIDTH = 700, HEIGHT = 500;
+	final static int WIDTH = 700;
+	final int HEIGHT = 500;
 	Thread thread;
 	Plane p;
 	Ball b1, b2, b3, b4;
@@ -110,5 +111,10 @@ public class Avoid extends Applet implements Runnable, KeyListener {
 	
 	public void keyTyped(KeyEvent arg0) {
 	}
+
+	public static int getWIDTH() {
+		return WIDTH;
+	}
+
 
 }

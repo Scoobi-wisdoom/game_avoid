@@ -1,13 +1,13 @@
 package game_avoid_v1;
 
-import java.awt.Graphics;
 import java.awt.Color;
+import java.awt.Graphics;
 
 public class Ball {
 	double xVel, yVel, x, y;
 	
 	public Ball() {
-		x = 350;
+		x = Avoid.getWIDTH()/2;
 		y = 10;
 		xVel = getRandomSpeed() * getRandomDirection();
 		yVel = getRandomSpeed() * getRandomDirection();
