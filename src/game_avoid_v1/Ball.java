@@ -5,6 +5,7 @@ import java.awt.Graphics;
 
 public class Ball {
 	double xVel, yVel, x, y;
+	int radius = 15;
 	
 	public Ball() {
 		x = Avoid.getWIDTH()/2;
@@ -27,16 +28,16 @@ public class Ball {
 	
 	public void draw(Graphics g) {
 		g.setColor(Color.white);
-		g.fillOval((int)x-10, (int)y-10, 20, 20);
+		g.fillOval((int)x-10, (int)y-10, getRadius()*2, getRadius()*2);
 	}
 	
 	// This part is to be revised and improved.
 	public boolean planeCollision(Plane p) {
 		int index = 0;
-		if(getY() >= p.getY() && getY() <= p.getY()+20) {
-			if(getX() <= p.getX() && getX() + 10 >= p.getX()) {
+		if(getY() >= p.getY() && getY() <= p.getY() + p.getHeight()) {
+			if(getX() <= p.getX() && getX() + getRadius() >= p.getX()) {
 				++index;				
-			} else if(getX() > p.getX() && getX() <= p.getX()+10+10) {
+			} else if(getX() > p.getX() && getX() <= p.getX() + p.getWidth() + getRadius()) {
 				++index;
 			}
 		} 
@@ -63,6 +64,10 @@ public class Ball {
 	
 	public int getY() {
 		return (int)y;
+	}
+	
+	public int getRadius() {
+		return (int)radius;
 	}
 
 }

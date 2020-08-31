@@ -7,6 +7,7 @@ public class Plane {
 	double x, y, xVel, yVel;
 	final double GRAVITY = 0.94;
 	boolean upAccel, downAccel, leftAccel, rightAccel;
+	int width = 10, height = 20;
 	public Plane() {
 		upAccel = false; downAccel = false; 
 		leftAccel = false; rightAccel = false;
@@ -16,7 +17,7 @@ public class Plane {
 	
 	public void draw(Graphics g) {
 		g.setColor(Color.white);
-		g.fillRect((int)x, (int)y, 10, 20);
+		g.fillRect((int)x, (int)y, width, height);
 	}
 	
 	public void move() {
@@ -83,6 +84,14 @@ public class Plane {
 	
 	public int getY() {
 		return (int)y;
+	}
+	
+	public int getWidth() {
+		return (int) width;
+	}
+	
+	public int getHeight() {
+		return (int) height;
 	}
 
 }

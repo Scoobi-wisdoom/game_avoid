@@ -14,7 +14,7 @@ public class Avoid extends Applet implements Runnable, KeyListener {
 	final int HEIGHT = 500;
 	Thread thread;
 	Plane p;
-	Ball b1, b2, b3, b4;
+	Ball b1, b2, b3, b4, b5,  b6;
 	boolean gameStarted, gameOver;
 	Graphics gfx;
 	Image img;
@@ -29,6 +29,8 @@ public class Avoid extends Applet implements Runnable, KeyListener {
 		b2 = new Ball();
 		b3 = new Ball();
 		b4 = new Ball();
+		b5 = new Ball();
+		b6 = new Ball();
 		img = createImage(WIDTH, HEIGHT);
 		gfx = img.getGraphics();
 		thread = new Thread(this);
@@ -38,7 +40,7 @@ public class Avoid extends Applet implements Runnable, KeyListener {
 	public void paint(Graphics g) {
 		gfx.setColor(Color.black);
 		gfx.fillRect(0,0, WIDTH, HEIGHT);
-		if(b1.planeCollision(p) || b2.planeCollision(p) || b3.planeCollision(p) || b4.planeCollision(p))
+		if(b1.planeCollision(p) || b2.planeCollision(p) || b3.planeCollision(p) || b4.planeCollision(p) || b5.planeCollision(p) || b6.planeCollision(p))
 			gameOver = true;
 		if(gameOver) {
 			gfx.setColor(Color.red);
@@ -49,6 +51,8 @@ public class Avoid extends Applet implements Runnable, KeyListener {
 			b2.draw(gfx);
 			b3.draw(gfx);
 			b4.draw(gfx);
+			b5.draw(gfx);
+			b6.draw(gfx);
 		}
 		
 		if(!gameStarted) {
@@ -71,6 +75,8 @@ public class Avoid extends Applet implements Runnable, KeyListener {
 				b2.move();
 				b3.move();
 				b4.move();
+				b5.move();
+				b6.move();
 			}
 			
 			repaint();
