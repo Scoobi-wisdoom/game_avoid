@@ -7,8 +7,6 @@ import java.awt.event.KeyListener;
 import java.awt.event.KeyEvent;
 import java.awt.Image;
 
-import java.util.ArrayList;
-
 public class Avoid extends Applet implements Runnable, KeyListener {
 	final static int WIDTH = 700;
 	final int HEIGHT = 500;
@@ -40,8 +38,20 @@ public class Avoid extends Applet implements Runnable, KeyListener {
 	public void paint(Graphics g) {
 		gfx.setColor(Color.black);
 		gfx.fillRect(0,0, WIDTH, HEIGHT);
-		if(b1.planeCollision(p) || b2.planeCollision(p) || b3.planeCollision(p) || b4.planeCollision(p) || b5.planeCollision(p) || b6.planeCollision(p))
+		
+		// If any of the balls collide with the plane, the plane's height or width is to be increased.
+		if(b1.planeCollision(p) || b2.planeCollision(p) || b3.planeCollision(p) || b4.planeCollision(p) || b5.planeCollision(p) || b6.planeCollision(p)) {
+			if(p.getHeight() <= HEIGHT) {
+				p.increaseHeight();
+			} else {
+				p.increaseWidth();
+			}
+		}
+		
+		// If both of plane's width and height exceed the screen size, the game is over. 
+		if(p.getWidth() > WIDTH && p.getHeight() > HEIGHT) {
 			gameOver = true;
+		}
 		if(gameOver) {
 			gfx.setColor(Color.red);
 			gfx.drawString("Game Over", 300, 250);

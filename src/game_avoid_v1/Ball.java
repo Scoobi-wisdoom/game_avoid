@@ -5,7 +5,7 @@ import java.awt.Graphics;
 
 public class Ball {
 	double xVel, yVel, x, y;
-	int radius = 15;
+	int radius = 35;
 	
 	public Ball() {
 		x = Avoid.getWIDTH()/2;

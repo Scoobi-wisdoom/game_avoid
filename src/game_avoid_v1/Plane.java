@@ -7,7 +7,7 @@ public class Plane {
 	double x, y, xVel, yVel;
 	final double GRAVITY = 0.94;
 	boolean upAccel, downAccel, leftAccel, rightAccel;
-	int width = 10, height = 20;
+	private int width = 10, height = 20;
 	public Plane() {
 		upAccel = false; downAccel = false; 
 		leftAccel = false; rightAccel = false;
@@ -54,12 +54,12 @@ public class Plane {
 			
 		if(y<0)
 			y = 0;
-		if(y>480)
-			y = 480;
+		if(y>500 - height)
+			y = 500 - height;
 		if(x<0)
 			x = 0;
-		if(x>690)
-			x = 690;
+		if(x> 700 - width)
+			x = 700 - width;
 	}
 	
 	public void setUpAccel(boolean input) {
@@ -90,8 +90,17 @@ public class Plane {
 		return (int) width;
 	}
 	
+	public void increaseWidth() {
+		 ++width;
+	}
+	
+	
 	public int getHeight() {
 		return (int) height;
+	}
+	
+	public void increaseHeight() {
+		++height;
 	}
 
 }
